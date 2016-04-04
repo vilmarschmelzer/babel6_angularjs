@@ -1,0 +1,1 @@
+# babel6_angularjs
