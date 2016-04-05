@@ -1,0 +1,33 @@
+<table class="mdl-data-table mdl-js-data-table">
+    <thead>
+        <th class="col-xs-1">Editar</th>
+        <th class="col-xs-9">Tarefa</th>
+        <th class="col-xs-1">Status</th>
+        <th class="col-xs-1">Remover</th>
+    </thead>
+    <tbody>
+
+        <tr ng-repeat="task_tr in tasks">
+            <td>
+                <button ng-click="alter(task_tr.id);" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab"><i class="material-icons">edit</i></button>
+            </td>
+
+            <td>
+                {[{ task_tr.task }]}
+            </td>
+            <td>
+                <button ng-show="!task_tr.done" class="mdl-button mdl-js-button mdl-button--raised" ng-click="done(task_tr);">
+                    <b>Finalizar</b>
+                </button>
+                <button ng-show="task_tr.done" class="mdl-button mdl-js-button mdl-button--raised" disabled>Finalizada</button>
+            </td>
+            <td>
+                <button class="mdl-button mdl-js-button mdl-button--raised" ng-click="delete(task_tr.id);">
+                    <i class="material-icons">delete</i>
+                </button>
+            </td>
+
+        </tr>
+
+    </tbody>
+</table>

@@ -1,0 +1,45 @@
+
+    <button id="show-dialog" type="button" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab">
+      <i class="material-icons">add</i>
+    </button>
+
+    <dialog class="mdl-dialog" id="modal_task">
+        <h4 class="mdl-dialog__title">Tarefa</h4>
+        <div class="mdl-dialog__content">
+            <form method="POST" ng-submit="save()">
+                <input type="hidden" name="id" ng-model="task.id">
+                <div class="mdl-textfield mdl-js-textfield">
+                    <label class="mdl-textfield__label">Descrição</label>
+                    <textarea class="mdl-textfield__input" name="task" ng-model="task.task" required></textarea>
+                </div>
+
+                <div class="mdl-textfield mdl-js-textfield">
+                    <label class="control-label">Finalizada</label>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" name="done" ng-model="task.done" value="false">
+
+                      </label>
+                    </div>
+                </div>
+                <div class="mdl-dialog__actions">
+                    <button type="submit" class="mdl-button">Salvar</button>
+                    <button type="button" class="mdl-button close">Fechar</button>
+                </div>
+
+            </form>
+        </div>
+    </dialog>
+    <script>
+        var dialog = document.querySelector('dialog');
+        var showDialogButton = document.querySelector('#show-dialog');
+        if (! dialog.showModal) {
+          dialogPolyfill.registerDialog(dialog);
+        }
+        showDialogButton.addEventListener('click', function() {
+          dialog.showModal();
+        });
+        dialog.querySelector('.close').addEventListener('click', function() {
+          dialog.close();
+        });
+      </script>
