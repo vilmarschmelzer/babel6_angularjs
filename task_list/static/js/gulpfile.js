@@ -3,6 +3,9 @@ var gulp = require('gulp')
 var connect = require('gulp-connect')
 var browserify = require('browserify')
 var source = require('vinyl-source-stream')
+var buffer = require('vinyl-buffer')
+var uglify = require('gulp-uglify')
+var ngAnnotate = require('gulp-ng-annotate')
 
 /*gulp.task('connect', function () {
 	connect.server({
@@ -16,7 +19,10 @@ gulp.task('browserify', function() {
     return browserify('./app/app.js')
     	// bundles it and creates a file called main.js
         .bundle()
-        .pipe(source('main.js'))
+        .pipe(source('main.min.js'))
+        .pipe(buffer())
+        .pipe(ngAnnotate())
+        .pipe(uglify())
         // saves it the public/js/ directory
         .pipe(gulp.dest('./public/js/'));
 })

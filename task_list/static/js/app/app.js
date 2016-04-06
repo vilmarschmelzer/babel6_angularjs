@@ -3,5 +3,5 @@ require('angular')
 var app = angular.module('app', [])
 
 app.controller('MainController', function($scope) {
-    $scope.message = 'Angular Works! TESTE'
+    $scope.message = 'Angular Works! TESTE teste 3'
 })
