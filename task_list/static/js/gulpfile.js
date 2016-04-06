@@ -1,28 +1,34 @@
-var gulp = require('gulp');
-var fs = require("fs");
-var browserify = require("browserify");
-var babelify = require("babelify");
-var source = require('vinyl-source-stream');
-var gutil = require('gulp-util');
+var gulp = require('gulp')
+//var sass = require('gulp-ruby-sass')
+var connect = require('gulp-connect')
+var browserify = require('browserify')
+var source = require('vinyl-source-stream')
 
-// Lets bring es6 to es5 with this.
-// Babel - converts ES6 code to ES5 - however it doesn't handle imports.
-// Browserify - crawls your code for dependencies and packages them up 
-// into one file. can have plugins.
-// Babelify - a babel plugin for browserify, to make browserify 
-// handle es6 including imports.
-gulp.task('es6', function() {
-	browserify({ debug: true })
-		.transform(babelify)
-		.require("./app/app.js", { entry: true })
-		.bundle()
-		.on('error',gutil.log)
-		.pipe(source('bundle.js'))
-    	.pipe(gulp.dest('./'));
-});
+/*gulp.task('connect', function () {
+	connect.server({
+		root: 'public',
+		port: 4000
+	})
+})*/
 
-gulp.task('watch',function() {
-	gulp.watch(['./app/**/*.js'],['es6'])
-});
- 
-gulp.task('default', ['es6','watch']);
+gulp.task('browserify', function() {
+	// Grabs the app.js file
+    return browserify('./app/app.js')
+    	// bundles it and creates a file called main.js
+        .bundle()
+        .pipe(source('main.js'))
+        // saves it the public/js/ directory
+        .pipe(gulp.dest('./public/js/'));
+})
+
+/*gulp.task('sass', function() {
+	return sass('sass/style.sass')
+		.pipe(gulp.dest('public/css'))
+})*/
+
+gulp.task('watch', function() {
+	gulp.watch('app/**/*.js', ['browserify'])
+	//gulp.watch('sass/style.sass', ['sass'])
+})
+
+gulp.task('default', ['connect', 'watch'])
