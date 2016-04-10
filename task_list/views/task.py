@@ -13,7 +13,7 @@ parser.add_argument('done', type=bool)
 
 class TaskRestView(Resource):
 
-    #decorators = [auth.login_required]
+    decorators = [auth.login_required]
 
     def delete(self, task_id):
         Task.query.filter(Task.id == task_id).delete()

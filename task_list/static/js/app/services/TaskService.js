@@ -1,0 +1,16 @@
+export default class TaskService {
+
+    /*@ngInject*/
+    constructor($http) {
+        this.$http = $http;
+    }
+
+    getTasks() {
+
+        return this.$http
+            .get('/task/')
+            .then((result) => {
+                return result.data;
+            });
+    }
+}

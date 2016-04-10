@@ -6,15 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="{{ url_for('static', filename='css/material.min.css')}}">
-    <script src="{{ url_for('static', filename='js/material.min.js')}}"></script>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <script src="{{ url_for('static', filename='js/jquery-2.1.4.min.js')}}" charset="utf-8"></script>
-
-    <script src="{{ url_for('static', filename='js/angular.min.js')}}" charset="utf-8"></script>
-    <script src="{{ url_for('static', filename='js/dialog-polyfill.js')}}" charset="utf-8"></script>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/dialog-polyfill.css')}}" />
-
     <link rel="stylesheet" href="{{ url_for('static', filename='css/task_list.css')}}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <script src="{{ url_for('static', filename='js/material.min.js')}}"></script>
+    <script src="{{ url_for('static', filename='js/jquery-2.1.4.min.js')}}" charset="utf-8"></script>
+    <script src="{{ url_for('static', filename='js/public/js/main.min.js')}}" charset="utf-8"></script>
+    <script src="{{ url_for('static', filename='js/dialog-polyfill.js')}}" charset="utf-8"></script>
+
 
     {% block js %}
     {% endblock %}

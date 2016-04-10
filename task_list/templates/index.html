@@ -1,46 +1,18 @@
-<!DOCTYPE html>
-<html lang="en" ng-app="app">
-<head>
-    <meta charset="UTF-8">
-    <title>My App</title>
-    <script src="{{url_for('static', filename='js/public/js/main.min.js')}}" charset="utf-8"></script>
-</head>
-<body>
-    <div ng-controller="AppController as appC">
+{% extends "base.html" %}
 
-        <table class="mdl-data-table mdl-js-data-table">
-    <thead>
-        <th class="col-xs-1">Editar</th>
-        <th class="col-xs-9">Tarefa</th>
-        <th class="col-xs-1">Status</th>
-        <th class="col-xs-1">Remover</th>
-    </thead>
-    <tbody>
+{% block angularapp %} ng-app="app" {% endblock %}
 
-        <tr ng-repeat="task_tr in appC.items">
-            <td>
-                <button ng-click="alter(task_tr.id);" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab"><i class="material-icons">edit</i></button>
-            </td>
+{% block content %}
 
-            <td>
-                {[{ task_tr.task }]}
-            </td>
-            <td>
-                <button ng-show="!task_tr.done" class="mdl-button mdl-js-button mdl-button--raised" ng-click="done(task_tr);">
-                    <b>Finalizar</b>
-                </button>
-                <button ng-show="task_tr.done" class="mdl-button mdl-js-button mdl-button--raised" disabled>Finalizada</button>
-            </td>
-            <td>
-                <button class="mdl-button mdl-js-button mdl-button--raised" ng-click="delete(task_tr.id);">
-                    <i class="material-icons">delete</i>
-                </button>
-            </td>
+<div>
+  <h2><b>{{ user.username }} - Lista de tarefas</b></h2>
 
-        </tr>
+</div>
 
-    </tbody>
-</table>
-    </div>
-</body>
-</html>
+<div ng-controller="TaskController as taskC">
+    {% include "modal_task.html"%}
+    {% include "table_task.html"%}
+
+</div>
+
+{% endblock %}
