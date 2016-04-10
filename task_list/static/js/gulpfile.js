@@ -1,11 +1,12 @@
 var gulp = require('gulp')
 //var sass = require('gulp-ruby-sass')
-var connect = require('gulp-connect')
+//var connect = require('gulp-connect')
 var browserify = require('browserify')
 var source = require('vinyl-source-stream')
 var buffer = require('vinyl-buffer')
 var uglify = require('gulp-uglify')
 var ngAnnotate = require('gulp-ng-annotate')
+var babelify = require('babelify')
 
 /*gulp.task('connect', function () {
 	connect.server({
@@ -16,7 +17,8 @@ var ngAnnotate = require('gulp-ng-annotate')
 
 gulp.task('browserify', function() {
 	// Grabs the app.js file
-    return browserify('./app/app.js')
+    return browserify({entries: './app/app.js', extensions: ['.js'], debug: true})
+        .transform(babelify, {})
     	// bundles it and creates a file called main.js
         .bundle()
         .pipe(source('main.min.js'))
