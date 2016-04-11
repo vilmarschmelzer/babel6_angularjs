@@ -13,4 +13,13 @@ export default class TaskService {
                 return result.data;
             });
     }
+
+    getTask(taskId) {
+
+        return this.$http
+            .get('/task/'+taskId+'/')
+            .then((result) => {
+                return result.data;
+            });
+    }
 }
