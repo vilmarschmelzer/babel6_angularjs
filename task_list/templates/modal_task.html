@@ -1,45 +1,38 @@
+<button id="show-dialog" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modal_task">
+    Add
+</button>
 
-    <button id="show-dialog" type="button" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab">
-      <i class="material-icons">add</i>
-    </button>
-
-    <dialog class="mdl-dialog" id="modal_task">
-        <h4 class="mdl-dialog__title">Tarefa</h4>
-        <div class="mdl-dialog__content">
+<div class="modal fade" id="modal_task" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">Tarefa</h4>
+            </div>
             <form method="POST" ng-submit="save()">
-                <input type="hidden" name="id" ng-model="task.id">
-                <div class="mdl-textfield mdl-js-textfield">
-                    <label class="mdl-textfield__label">Descrição</label>
-                    <textarea class="mdl-textfield__input" name="task" ng-model="taskC.task.task" required></textarea>
-                </div>
+                <div class="modal-body">
 
-                <div class="mdl-textfield mdl-js-textfield">
-                    <label class="control-label">Finalizada</label>
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" name="done" ng-model="taskC.task.done" value="false">
+                    <input type="hidden" name="id" ng-model="task.id">
+                    <fieldset class="form-group">
+                        <label for="descricao">Descrição</label>
+                        <input type="text" class="form-control" id="task" ng-model="taskC.task.task" placeholder="Descrição da tarefa">
+                        <small class="text-muted">Descreva a tarefa</small>
+                    </fieldset>
 
-                      </label>
-                    </div>
-                </div>
-                <div class="mdl-dialog__actions">
-                    <button type="submit" class="mdl-button">Salvar</button>
-                    <button type="button" class="mdl-button close">Fechar</button>
-                </div>
+                    <label class="c-input c-checkbox">
+                        <input type="checkbox" name="done" ng-model="taskC.task.done" value="false">
+                        <span class="c-indicator"></span>
+                        Finalizada
+                    </label>
 
+
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Salvar</button>
+                </div>
             </form>
         </div>
-    </dialog>
-    <script>
-        var dialog = document.querySelector('dialog');
-        var showDialogButton = document.querySelector('#show-dialog');
-        if (! dialog.showModal) {
-          dialogPolyfill.registerDialog(dialog);
-        }
-        showDialogButton.addEventListener('click', function() {
-          dialog.showModal();
-        });
-        dialog.querySelector('.close').addEventListener('click', function() {
-          dialog.close();
-        });
-      </script>
+    </div>
+</div>

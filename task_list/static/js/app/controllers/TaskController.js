@@ -9,7 +9,7 @@ export default class TaskController {
         this.tasks = [];
         this.taskService = TaskService;
 
-        this.dialog = document.querySelector('dialog');
+        this.dialog = $('#modal_task');
 
         TaskService.getTasks().then( result =>  {
             this.tasks = result;
@@ -21,7 +21,7 @@ export default class TaskController {
         this.taskService.getTask(taskId).then(result => {
             this.task = result;
 
-            dialog.showModal();
+            this.dialog.modal('show');
         });
     }
 
@@ -34,7 +34,7 @@ export default class TaskController {
             this.task.task='';
             this.task.done=false;
         }
-        dialog.showModal();
+        this.dialog.modal('show');
     }
 
 
