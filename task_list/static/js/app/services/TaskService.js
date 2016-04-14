@@ -22,4 +22,23 @@ export default class TaskService {
                 return result.data;
             });
     }
+
+    saveTask(task) {
+
+        if(task.id == null){
+
+            return this.$http.post('/task/', task)
+            .then((result) => {
+                return true;
+            });
+        }
+        else{
+            return this.$http.put('/task/'+task.id+'/', task)
+            .then((result) => {
+
+                return true;
+            });
+        }
+    }
+
 }

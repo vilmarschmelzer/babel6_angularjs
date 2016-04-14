@@ -11,7 +11,12 @@ export default class TaskController {
 
         this.dialog = $('#modal_task');
 
-        TaskService.getTasks().then( result =>  {
+        this.getTasks();
+    }
+
+    getTasks(){
+
+        this.taskService.getTasks().then( result =>  {
             this.tasks = result;
         });
     }
@@ -39,6 +44,13 @@ export default class TaskController {
 
 
     saveTask(){
+
+        this.taskService.saveTask(this.task).then(result => {
+
+        });
+
+        this.getTasks();
+        this.dialog.modal('hide');
 
     }
 

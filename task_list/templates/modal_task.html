@@ -1,4 +1,4 @@
-<button id="show-dialog" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modal_task">
+<button id="show-dialog" type="button" class="btn btn-primary btn-lg" ng-click="taskC.newTask()">
     Add
 </button>
 
@@ -11,7 +11,7 @@
                 </button>
                 <h4 class="modal-title" id="myModalLabel">Tarefa</h4>
             </div>
-            <form method="POST" ng-submit="save()">
+            <form method="POST" ng-submit="taskC.saveTask()">
                 <div class="modal-body">
 
                     <input type="hidden" name="id" ng-model="task.id">
