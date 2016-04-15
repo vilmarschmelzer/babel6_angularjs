@@ -10,6 +10,7 @@
 </div>
 
 <div ng-controller="TaskController as taskC">
+    <div ng-show="taskC.loading">Buscando...</div>
     {% include "modal_task.html"%}
     {% include "table_task.html"%}
 
