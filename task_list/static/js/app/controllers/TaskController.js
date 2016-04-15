@@ -18,6 +18,9 @@ export default class TaskController {
 
         this.taskService.getTasks().then( result =>  {
             this.tasks = result;
+        },
+        failure => {
+            //alert(failure);
         });
     }
 
@@ -46,12 +49,23 @@ export default class TaskController {
     saveTask(){
 
         this.taskService.saveTask(this.task).then(result => {
+            this.getTasks();
+            this.dialog.modal('hide');
+        });
+    }
 
+    doneTask(task){
+        this.taskService.doneTask(task).then(result => {
+            this.getTasks();
+        });
+    }
+
+    deleteTask(taskId){
+        this.taskService.deleteTask(taskId).then(result => {
+            this.getTasks();
         });
 
-        this.getTasks();
-        this.dialog.modal('hide');
-
     }
+
 
 }

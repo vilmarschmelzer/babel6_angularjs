@@ -20,6 +20,10 @@ export default class TaskService {
             .get('/task/'+taskId+'/')
             .then((result) => {
                 return result.data;
+            },
+            (failure) => {
+                //console.log(failure);
+                //alert(failure);
             });
     }
 
@@ -39,6 +43,21 @@ export default class TaskService {
                 return true;
             });
         }
+    }
+
+    doneTask(task) {
+        task.done = true;
+
+        return this.saveTask(task);
+    }
+
+    deleteTask(taskId) {
+
+        return this.$http
+            .delete('/task/'+taskId+'/')
+            .then((result) => {
+                return result.data;
+            });
     }
 
 }

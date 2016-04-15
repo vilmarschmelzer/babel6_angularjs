@@ -16,13 +16,13 @@
                 {[{ task_tr.task }]}
             </td>
             <td>
-                <button ng-show="!task_tr.done" class="btn btn-primary" ng-click="done(task_tr);">
+                <button ng-show="!task_tr.done" class="btn btn-primary" ng-click="taskC.doneTask(task_tr);">
                     <b>Finalizar</b>
                 </button>
                 <button ng-show="task_tr.done" class="btn btn-primary" disabled>Finalizada</button>
             </td>
             <td>
-                <button class="btn btn-primary" ng-click="delete(task_tr.id);">
+                <button class="btn btn-primary" ng-click="taskC.deleteTask(task_tr.id);">
                     <i class="material-icons">delete</i>
                 </button>
             </td>

@@ -3,6 +3,7 @@ from task_list import db, auth, app
 from task_list.models import Task
 from memory_profiler import profile
 import json
+import time
 
 
 parser = reqparse.RequestParser()
@@ -43,6 +44,8 @@ class TaskRestView(Resource):
         return 'Sucesso', 201
 
     def get(self, task_id=None):
+
+
         if task_id is None:
             tasks = Task.query.all()
             serialized = json.dumps([c.json_dump() for c in tasks])
